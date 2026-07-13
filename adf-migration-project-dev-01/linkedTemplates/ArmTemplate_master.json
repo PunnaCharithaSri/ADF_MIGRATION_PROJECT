@@ -1,0 +1,299 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-migration-project-dev-01"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
+		"DS_OUTPUT_PARQUET_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'DS_OUTPUT_PARQUET'"
+		},
+		"DS_SQL_MIGRATION_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'DS_SQL_MIGRATION'"
+		},
+		"LS_ADLS_BLOB_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_ADLS_BLOB'"
+		},
+		"LS_Binary_TXT_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_Binary_TXT'"
+		},
+		"LS_CSV_DATA_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_CSV_DATA'"
+		},
+		"LS_CSV_PARQUET_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_CSV_PARQUET'"
+		},
+		"LS_INPUT_MULTIFILES_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_INPUT_MULTIFILES'"
+		},
+		"LS_INPUT_MULTPLE_CSVS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_INPUT_MULTPLE_CSVS'"
+		},
+		"LS_MULTI_CSVS_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_MULTI_CSVS'"
+		},
+		"LS_MULTI_CSVS_OUTPUT_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_MULTI_CSVS_OUTPUT'"
+		},
+		"LS_OUTPUT_Binary_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_OUTPUT_Binary'"
+		},
+		"LS_OUTPUT_MULTIPLE_PARQUET_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_OUTPUT_MULTIPLE_PARQUET'"
+		},
+		"LS_REST_PARQ_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'LS_REST_PARQ'"
+		},
+		"SqlServer1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'SqlServer1'"
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"DS_OUTPUT_PARQUET_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"DS_SQL_MIGRATION_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "PRAVALLIKA\\SQLEXPRESS"
+		},
+		"DS_SQL_MIGRATION_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Visionboardmigration"
+		},
+		"DS_SQL_MIGRATION_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sa"
+		},
+		"LS_ADLS_BLOB_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"LS_CSV_DATA_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"LS_MULTI_CSVS_OUTPUT_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"LS_OUTPUT_Binary_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"LS_OUTPUT_MULTIPLE_PARQUET_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"LS_REST_PARQ_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"LS_RestResource_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://retoolapi.dev/5yDVOt/data"
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "PRAVALLIKA\\SQLEXPRESS"
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Visionboardmigration"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sa"
+		},
+		"integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+			"type": "string",
+			"defaultValue": "/subscriptions/312009e1-1511-4975-acfa-117e678074ae/resourcegroups/rg_adf_lab/providers/Microsoft.DataFactory/factories/adf-dev-prac-01/integrationruntimes/SHintegrationRuntime"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adf-migration-project-dev-01_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
+					"DS_OUTPUT_PARQUET_accountKey": {
+						"value": "[parameters('DS_OUTPUT_PARQUET_accountKey')]"
+					},
+					"LS_ADLS_BLOB_accountKey": {
+						"value": "[parameters('LS_ADLS_BLOB_accountKey')]"
+					},
+					"LS_Binary_TXT_connectionString": {
+						"value": "[parameters('LS_Binary_TXT_connectionString')]"
+					},
+					"LS_CSV_DATA_accountKey": {
+						"value": "[parameters('LS_CSV_DATA_accountKey')]"
+					},
+					"LS_CSV_PARQUET_connectionString": {
+						"value": "[parameters('LS_CSV_PARQUET_connectionString')]"
+					},
+					"LS_INPUT_MULTIFILES_connectionString": {
+						"value": "[parameters('LS_INPUT_MULTIFILES_connectionString')]"
+					},
+					"LS_INPUT_MULTPLE_CSVS_connectionString": {
+						"value": "[parameters('LS_INPUT_MULTPLE_CSVS_connectionString')]"
+					},
+					"LS_MULTI_CSVS_connectionString": {
+						"value": "[parameters('LS_MULTI_CSVS_connectionString')]"
+					},
+					"LS_MULTI_CSVS_OUTPUT_accountKey": {
+						"value": "[parameters('LS_MULTI_CSVS_OUTPUT_accountKey')]"
+					},
+					"LS_OUTPUT_Binary_accountKey": {
+						"value": "[parameters('LS_OUTPUT_Binary_accountKey')]"
+					},
+					"LS_OUTPUT_MULTIPLE_PARQUET_accountKey": {
+						"value": "[parameters('LS_OUTPUT_MULTIPLE_PARQUET_accountKey')]"
+					},
+					"LS_REST_PARQ_accountKey": {
+						"value": "[parameters('LS_REST_PARQ_accountKey')]"
+					},
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"DS_OUTPUT_PARQUET_properties_typeProperties_url": {
+						"value": "[parameters('DS_OUTPUT_PARQUET_properties_typeProperties_url')]"
+					},
+					"LS_ADLS_BLOB_properties_typeProperties_url": {
+						"value": "[parameters('LS_ADLS_BLOB_properties_typeProperties_url')]"
+					},
+					"LS_CSV_DATA_properties_typeProperties_url": {
+						"value": "[parameters('LS_CSV_DATA_properties_typeProperties_url')]"
+					},
+					"LS_MULTI_CSVS_OUTPUT_properties_typeProperties_url": {
+						"value": "[parameters('LS_MULTI_CSVS_OUTPUT_properties_typeProperties_url')]"
+					},
+					"LS_OUTPUT_Binary_properties_typeProperties_url": {
+						"value": "[parameters('LS_OUTPUT_Binary_properties_typeProperties_url')]"
+					},
+					"LS_OUTPUT_MULTIPLE_PARQUET_properties_typeProperties_url": {
+						"value": "[parameters('LS_OUTPUT_MULTIPLE_PARQUET_properties_typeProperties_url')]"
+					},
+					"LS_REST_PARQ_properties_typeProperties_url": {
+						"value": "[parameters('LS_REST_PARQ_properties_typeProperties_url')]"
+					},
+					"LS_RestResource_properties_typeProperties_url": {
+						"value": "[parameters('LS_RestResource_properties_typeProperties_url')]"
+					},
+					"integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+						"value": "[parameters('integrationRuntime1_properties_typeProperties_linkedInfo_resourceId')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "adf-migration-project-dev-01_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"DS_SQL_MIGRATION_password": {
+						"value": "[parameters('DS_SQL_MIGRATION_password')]"
+					},
+					"SqlServer1_password": {
+						"value": "[parameters('SqlServer1_password')]"
+					},
+					"DS_SQL_MIGRATION_properties_typeProperties_server": {
+						"value": "[parameters('DS_SQL_MIGRATION_properties_typeProperties_server')]"
+					},
+					"DS_SQL_MIGRATION_properties_typeProperties_database": {
+						"value": "[parameters('DS_SQL_MIGRATION_properties_typeProperties_database')]"
+					},
+					"DS_SQL_MIGRATION_properties_typeProperties_userName": {
+						"value": "[parameters('DS_SQL_MIGRATION_properties_typeProperties_userName')]"
+					},
+					"SqlServer1_properties_typeProperties_server": {
+						"value": "[parameters('SqlServer1_properties_typeProperties_server')]"
+					},
+					"SqlServer1_properties_typeProperties_database": {
+						"value": "[parameters('SqlServer1_properties_typeProperties_database')]"
+					},
+					"SqlServer1_properties_typeProperties_userName": {
+						"value": "[parameters('SqlServer1_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-migration-project-dev-01_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "adf-migration-project-dev-01_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'adf-migration-project-dev-01_ArmTemplate_1')]"
+			]
+		}
+	]
+}

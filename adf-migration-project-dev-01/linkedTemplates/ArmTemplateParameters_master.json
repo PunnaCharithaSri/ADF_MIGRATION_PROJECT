@@ -1,0 +1,108 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "adf-migration-project-dev-01"
+		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
+		"DS_OUTPUT_PARQUET_accountKey": {
+			"value": ""
+		},
+		"DS_SQL_MIGRATION_password": {
+			"value": ""
+		},
+		"LS_ADLS_BLOB_accountKey": {
+			"value": ""
+		},
+		"LS_Binary_TXT_connectionString": {
+			"value": ""
+		},
+		"LS_CSV_DATA_accountKey": {
+			"value": ""
+		},
+		"LS_CSV_PARQUET_connectionString": {
+			"value": ""
+		},
+		"LS_INPUT_MULTIFILES_connectionString": {
+			"value": ""
+		},
+		"LS_INPUT_MULTPLE_CSVS_connectionString": {
+			"value": ""
+		},
+		"LS_MULTI_CSVS_connectionString": {
+			"value": ""
+		},
+		"LS_MULTI_CSVS_OUTPUT_accountKey": {
+			"value": ""
+		},
+		"LS_OUTPUT_Binary_accountKey": {
+			"value": ""
+		},
+		"LS_OUTPUT_MULTIPLE_PARQUET_accountKey": {
+			"value": ""
+		},
+		"LS_REST_PARQ_accountKey": {
+			"value": ""
+		},
+		"SqlServer1_password": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"DS_OUTPUT_PARQUET_properties_typeProperties_url": {
+			"value": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"DS_SQL_MIGRATION_properties_typeProperties_server": {
+			"value": "PRAVALLIKA\\SQLEXPRESS"
+		},
+		"DS_SQL_MIGRATION_properties_typeProperties_database": {
+			"value": "Visionboardmigration"
+		},
+		"DS_SQL_MIGRATION_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"LS_ADLS_BLOB_properties_typeProperties_url": {
+			"value": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"LS_CSV_DATA_properties_typeProperties_url": {
+			"value": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"LS_MULTI_CSVS_OUTPUT_properties_typeProperties_url": {
+			"value": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"LS_OUTPUT_Binary_properties_typeProperties_url": {
+			"value": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"LS_OUTPUT_MULTIPLE_PARQUET_properties_typeProperties_url": {
+			"value": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"LS_REST_PARQ_properties_typeProperties_url": {
+			"value": "https://adlsdevprac01.dfs.core.windows.net/"
+		},
+		"LS_RestResource_properties_typeProperties_url": {
+			"value": "https://retoolapi.dev/5yDVOt/data"
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"value": "PRAVALLIKA\\SQLEXPRESS"
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"value": "Visionboardmigration"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"integrationRuntime1_properties_typeProperties_linkedInfo_resourceId": {
+			"value": "/subscriptions/312009e1-1511-4975-acfa-117e678074ae/resourcegroups/rg_adf_lab/providers/Microsoft.DataFactory/factories/adf-dev-prac-01/integrationruntimes/SHintegrationRuntime"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
