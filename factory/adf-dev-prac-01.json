@@ -1,0 +1,15 @@
+{
+	"name": "adf-dev-prac-01",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "34ef2cd9-32f1-4cbb-96b1-b399a72d912c",
+		"tenantId": "f61628a7-28f2-477a-ba90-9e362286ed44"
+	}
+}

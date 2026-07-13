@@ -1,0 +1,20 @@
+{
+	"name": "DS_MULTIPLE_CSVS_OUTPUT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_MULTI_CSVS_OUTPUT",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "outputmultiplecsvs"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
